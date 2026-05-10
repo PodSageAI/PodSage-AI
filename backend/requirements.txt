@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+requests
+kubernetes
+websockets
+python-dotenv
+pydantic
+apscheduler

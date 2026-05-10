@@ -1,2 +1,3 @@
-# PodSage-AI
-AI-Powered Kubernetes Observability &amp; Infrastructure Intelligence Platform
+# PodSage AI
+
+AI-Powered Kubernetes Observability & Infrastructure Intelligence Platform
