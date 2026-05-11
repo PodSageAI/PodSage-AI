@@ -8,11 +8,14 @@ from app.api.insights import router as insights_router
 
 from app.database.db import initialize_database
 
+# Application version
+VERSION = "v0.1.2-alpha"
+
 # Initialize FastAPI app
 app = FastAPI(
     title="PodSage AI",
     description="AI-Powered Kubernetes Observability Platform",
-    version="0.1.1-alpha"
+    version=VERSION
 )
 
 # Initialize database
@@ -39,12 +42,13 @@ def root():
     return {
         "message": "PodSage AI Backend Running",
         "status": "healthy",
-        "version": "0.1.0-alpha"
+        "version": VERSION
     }
 
 
 @app.get("/health")
 def health():
     return {
-        "status": "healthy"
+        "status": "healthy",
+        "version": VERSION
     }
