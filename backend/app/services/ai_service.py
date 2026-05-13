@@ -25,7 +25,11 @@ def detect_anomalies():
             if value > CPU_THRESHOLD:
                 anomalies.append({
                     "type": "High CPU Usage",
-                    "pod": item['metric'].get('pod', 'unknown'),
+                    "pod": (
+                        item['metric'].get('pod')
+                        or item['metric'].get('instance')
+                        or "unknown"
+                    ),
                     "value": value
                 })
 
@@ -35,7 +39,11 @@ def detect_anomalies():
             if value > MEMORY_THRESHOLD:
                 anomalies.append({
                     "type": "High Memory Usage",
-                    "pod": item['metric'].get('pod', 'unknown'),
+                    "pod": (
+                        item['metric'].get('pod')
+                        or item['metric'].get('instance')
+                        or "unknown"
+                    ),
                     "value": value
                 })
 
@@ -45,7 +53,11 @@ def detect_anomalies():
             if value > RESTART_THRESHOLD:
                 anomalies.append({
                     "type": "Frequent Pod Restarts",
-                    "pod": item['metric'].get('pod', 'unknown'),
+                    "pod": (
+                        item['metric'].get('pod')
+                        or item['metric'].get('instance')
+                        or "unknown"
+                    ),
                     "value": value
                 })
 
