@@ -71,3 +71,49 @@ def detect_anomalies():
         })
 
     return anomalies
+
+
+def generate_insights():
+    anomalies = detect_anomalies()
+
+    insights = []
+
+    for anomaly in anomalies:
+
+        if anomaly.get("type") == "High CPU Usage":
+            insights.append({
+                "pod": anomaly['pod'],
+                "insight": (
+                    f"Pod {anomaly['pod']} is consuming "
+                    f"{anomaly['value']}{anomaly['unit']} CPU."
+                ),
+                "recommendation": (
+                    "Consider scaling replicas or optimizing workload."
+                )
+            })
+
+        elif anomaly.get("type") == "High Memory Usage":
+            insights.append({
+                "pod": anomaly['pod'],
+                "insight": (
+                    f"Pod {anomaly['pod']} is using "
+                    f"{anomaly['value']} {anomaly['unit']} memory."
+                ),
+                "recommendation": (
+                    "Inspect application memory allocation patterns."
+                )
+            })
+
+        elif anomaly.get("type") == "Frequent Pod Restarts":
+            insights.append({
+                "pod": anomaly['pod'],
+                "insight": (
+                    f"Pod {anomaly['pod']} restarted "
+                    f"{anomaly['value']} times."
+                ),
+                "recommendation": (
+                    "Check logs and container health probes."
+                )
+            })
+
+    return insights
