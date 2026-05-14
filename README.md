@@ -1,283 +1,135 @@
-# PodSage AI
+# 🧠 PodSage AI
 
-AI-Powered Kubernetes Observability & Infrastructure Intelligence Platform
+<p align="center">
+  <b>AI-Powered Kubernetes Observability & Infrastructure Intelligence</b>
+</p>
+
+<p align="center">
+  Real-time telemetry • AI-driven anomaly detection • Infrastructure intelligence
+</p>
 
 ---
 
 ## Overview
 
-PodSage AI is an intelligent Kubernetes observability platform designed to monitor, analyze, and correlate real-time pod resource behavior using AI-driven infrastructure insights.
+PodSage AI is an intelligent Kubernetes observability platform designed to monitor, analyze, and correlate real-time infrastructure behavior using AI-powered operational insights.
 
-Built for the ABB Accelerator 2026 challenge, the platform helps engineers detect anomalies, understand service dependencies, and optimize containerized environments through real-time analytics, anomaly detection, and intelligent recommendations.
+Built for the **ABB Accelerator 2026** challenge, the platform combines Kubernetes telemetry, Prometheus metrics, anomaly detection, dependency analysis, and infrastructure intelligence into a unified monitoring ecosystem.
 
-The platform combines Kubernetes telemetry, Prometheus metrics, AI-driven analysis, and real-time dashboards into a unified infrastructure intelligence system.
+The goal is simple:
 
----
-
-# Organisation
-
-**Organisation Display Name:** PodSage AI
-**GitHub Organization:** `PodSageAI`
+> Transform raw Kubernetes metrics into actionable operational intelligence.
 
 ---
 
-## Key Features
+## ✨ Core Features
 
-* Real-time Kubernetes monitoring
-* CPU, memory, and restart analytics
-* AI-powered anomaly detection
-* Infrastructure intelligence & recommendations
-* Pod dependency mapping
-* Prometheus integration
-* WebSocket live updates
-* Dockerized deployment
-* Kubernetes-compatible architecture
-* Extensible AI agent framework
-* Fault-tolerant metric fallback handling
-* Node-level fallback monitoring
-* Lightweight FastAPI backend
-* AI insights generation engine
+- 📡 Real-time Kubernetes monitoring
+- 🧠 AI-powered anomaly detection
+- 🔥 Infrastructure intelligence engine
+- 📈 CPU, memory & restart analytics
+- 🔗 Pod dependency mapping
+- ⚡ WebSocket live updates
+- 📊 Prometheus integration
+- 🐳 Dockerized deployment
+- ☸️ Kubernetes-native architecture
+- 🧩 Modular AI agent framework
+- 🛡️ Fault-tolerant metric fallback handling
+- 🚀 Lightweight FastAPI backend
 
 ---
 
-# System Architecture
+# 🏗️ System Architecture
 
 ```mermaid
 flowchart LR
 
-    A["Applications / Microservices<br/>(Multiple Pods)"]
+    A["Applications / Microservices"]
 
-    B["Data Collection Layer<br/><br/>
-    • cAdvisor / Kubelet Metrics<br/>
-    • Prometheus + Node Exporter<br/>
-    • kube-state-metrics<br/>
-    • PVC / Storage Metrics<br/>
-    • Network / eBPF (Optional)"]
+    B["Data Collection Layer
+    • Prometheus
+    • Node Exporter
+    • kube-state-metrics
+    • cAdvisor"]
 
-    C["AI Agent Layer (Multi-Agent)<br/><br/>
-    • CPU Agent<br/>
-    • Memory Agent<br/>
-    • Storage Agent<br/>
-    • Network Agent<br/>
-    • Log/IO Agent<br/>
-    • Dependency Mapper Agent<br/>
-    • Correlation Engine<br/>
-    • Coordinator / Orchestrator Agent"]
+    C["AI Agent Layer
+    • CPU Agent
+    • Memory Agent
+    • Dependency Mapper
+    • Correlation Engine"]
 
-    D["Intelligence & Storage Layer<br/><br/>
-    • Prometheus (Time-Series DB)<br/>
-    • SQLite Metadata Storage<br/>
-    • Loki / Vector Log Aggregation<br/>
-    • NetworkX / Neo4j Dependency Graph<br/>
-    • ML Models (Anomaly Detection & Forecasting)"]
+    D["Intelligence Layer
+    • Prometheus
+    • SQLite
+    • Loki
+    • ML Models"]
 
-    E["Dashboard & User Layer<br/><br/>
-    • React / Next.js Dashboard<br/>
-    • Recharts / Plotly Visualizations<br/>
-    • Grafana Integration<br/>
-    • WebSocket Real-Time Updates<br/>
-    • NLP Insights Panel<br/>
-    • Alerts & Dependency Graphs"]
+    E["Dashboard Layer
+    • React / Next.js
+    • Grafana
+    • WebSockets"]
 
-    A -->|"Telemetry, Metrics, Logs"| B
-
-    B -->|"Infrastructure Data Streams"| C
-
-    C -->|"Correlated Insights & Analysis"| D
-
-    D -->|"Visualizations, Alerts & Intelligence"| E
+    A --> B
+    B --> C
+    C --> D
+    D --> E
 ```
 
 ---
 
-# Tech Stack
+# ⚙️ Tech Stack
 
 ## Backend
-
-* Python 3.11
-* FastAPI
-* Uvicorn
-* WebSockets
-* SQLite
+- Python 3.11
+- FastAPI
+- Uvicorn
+- WebSockets
+- SQLite
 
 ## Monitoring & Metrics
-
-* Prometheus
-* Node Exporter
-* Kubernetes Metrics API
-* cAdvisor
+- Prometheus
+- Node Exporter
+- Kubernetes Metrics API
+- cAdvisor
 
 ## Infrastructure
-
-* Docker
-* Docker Compose
-* Kubernetes
-* Minikube
-* K3s
-* MicroK8s
+- Docker
+- Docker Compose
+- Kubernetes
+- Minikube
+- K3s
+- MicroK8s
 
 ## AI & Analysis
-
-* Rule-based anomaly detection
-* Infrastructure correlation engine
-* Dependency analysis
-* Forecast-ready architecture
+- Rule-based anomaly detection
+- Infrastructure correlation engine
+- Forecast-ready architecture
 
 ## Frontend (Planned)
-
-* React / Next.js
-* Recharts
-* Plotly
-* Grafana
+- React / Next.js
+- Recharts
+- Plotly
+- Grafana
 
 ---
 
-# Project Structure
+# 📁 Project Structure
 
 ```text
 PodSage-AI/
-├── LICENSE
-├── README.md
 ├── backend/
+│   ├── app/
 │   ├── Dockerfile
 │   ├── docker-compose.yml
 │   ├── prometheus.yml
-│   ├── requirements.txt
-│   ├── podsage.db
-│   │
-│   └── app/
-│       ├── api/
-│       │   ├── anomalies.py
-│       │   ├── dependencies.py
-│       │   ├── insights.py
-│       │   ├── metrics.py
-│       │   └── __init__.py
-│       │
-│       ├── database/
-│       │   ├── db.py
-│       │   └── __init__.py
-│       │
-│       ├── models/
-│       │   ├── schemas.py
-│       │   └── __init__.py
-│       │
-│       ├── services/
-│       │   ├── ai_service.py
-│       │   ├── alert_service.py
-│       │   ├── dependency_service.py
-│       │   ├── kubernetes_service.py
-│       │   ├── prometheus_service.py
-│       │   └── __init__.py
-│       │
-│       ├── websocket/
-│       │   ├── live_updates.py
-│       │   └── __init__.py
-│       │
-│       ├── __init__.py
-│       └── main.py
-│
-└── .gitignore
+│   └── requirements.txt
+├── README.md
+└── LICENSE
 ```
 
 ---
 
-# API Endpoints
-
-## Health Endpoints
-
-| Endpoint  | Description          |
-| --------- | -------------------- |
-| `/`       | Root status endpoint |
-| `/health` | Health check         |
-
----
-
-## Metrics Endpoints
-
-| Endpoint            | Description          |
-| ------------------- | -------------------- |
-| `/metrics/cpu`      | CPU usage metrics    |
-| `/metrics/memory`   | Memory usage metrics |
-| `/metrics/restarts` | Pod restart metrics  |
-
----
-
-## AI & Intelligence Endpoints
-
-| Endpoint        | Description                       |
-| --------------- | --------------------------------- |
-| `/anomalies`    | Detected anomalies                |
-| `/insights`     | AI-generated operational insights |
-| `/dependencies` | Service dependency map            |
-
----
-
-# Example Responses
-
-## Root Endpoint
-
-```json
-{
-  "message": "PodSage AI Backend Running",
-  "status": "healthy",
-  "version": "v0.1.3-alpha"
-}
-```
-
----
-
-## CPU Metrics
-
-```json
-{
-  "status": "success",
-  "data": {
-    "resultType": "vector",
-    "result": [
-      {
-        "metric": {},
-        "value": [
-          1778683850.411,
-          "0.2482235237555631"
-        ]
-      }
-    ]
-  }
-}
-```
-
----
-
-## Anomaly Detection
-
-```json
-[
-  {
-    "type": "High CPU Usage",
-    "pod": "node-exporter:9100",
-    "value": 24.82,
-    "unit": "%"
-  }
-]
-```
-
----
-
-## AI Insights
-
-```json
-[
-  {
-    "pod": "node-exporter:9100",
-    "insight": "Pod node-exporter:9100 is consuming unusually high CPU resources.",
-    "recommendation": "Consider scaling replicas or optimizing workload."
-  }
-]
-```
-
----
-
-# Installation
+# 🚀 Installation
 
 ## Clone Repository
 
@@ -285,8 +137,6 @@ PodSage-AI/
 git clone https://github.com/PodSageAI/PodSage-AI.git
 cd PodSage-AI/backend
 ```
-
----
 
 ## Install Dependencies
 
@@ -296,7 +146,7 @@ pip install -r requirements.txt
 
 ---
 
-# Running the Backend
+# ▶️ Running the Backend
 
 ## Local Development
 
@@ -304,7 +154,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-Backend URL:
+Backend:
 
 ```text
 http://localhost:8000
@@ -318,15 +168,13 @@ http://localhost:8000/docs
 
 ---
 
-# Docker Usage
+# 🐳 Docker Usage
 
 ## Start Services
 
 ```bash
 docker compose up --build
 ```
-
----
 
 ## Stop Services
 
@@ -336,43 +184,42 @@ docker compose down
 
 ---
 
-# Docker Services
+# 📡 API Endpoints
 
-| Service       | Port | Description                |
-| ------------- | ---- | -------------------------- |
-| Backend       | 8000 | FastAPI backend            |
-| Prometheus    | 9090 | Metrics database           |
-| Node Exporter | 9100 | Host/node metrics exporter |
+## Health
 
----
+| Endpoint | Description |
+|---|---|
+| `/` | Root status |
+| `/health` | Health check |
 
-# Prometheus Integration
+## Metrics
 
-PodSage AI supports:
+| Endpoint | Description |
+|---|---|
+| `/metrics/cpu` | CPU metrics |
+| `/metrics/memory` | Memory metrics |
+| `/metrics/restarts` | Restart metrics |
 
-* Prometheus metrics
-* Node Exporter metrics
-* Kubernetes metrics
-* Container metrics
-* Node-level fallback monitoring
+## AI & Intelligence
 
-The backend automatically falls back to node metrics when container-level metrics are unavailable.
-
-Example fallback query:
-
-```promql
-1 - avg(rate(node_cpu_seconds_total{mode="idle"}[1m]))
-```
+| Endpoint | Description |
+|---|---|
+| `/anomalies` | Detected anomalies |
+| `/insights` | AI-generated insights |
+| `/dependencies` | Dependency mapping |
 
 ---
 
-# AI Anomaly Detection
+# 🧠 AI Capabilities
 
-The AI engine currently supports:
+Current AI functionality includes:
 
-* High CPU usage detection
-* High memory usage detection
-* Frequent restart detection
+- High CPU usage detection
+- High memory usage detection
+- Restart anomaly detection
+- Infrastructure correlation
+- Dependency intelligence
 
 Default thresholds:
 
@@ -384,74 +231,46 @@ RESTART_THRESHOLD = 5
 
 ---
 
-# Current Capabilities
+# 🛣️ Roadmap
 
-* Live CPU monitoring
-* Memory monitoring
-* Pod restart tracking
-* AI anomaly detection
-* Infrastructure insights
-* Dependency mapping
-* Prometheus querying
-* Real-time backend APIs
-* Fault-tolerant Prometheus fallback handling
-
----
-
-# Planned Features
-
-* LLM-powered operational intelligence
-* NLP querying
-* Historical anomaly analytics
-* Predictive forecasting
-* Real dependency graph visualization
-* Grafana dashboard integration
-* Multi-node Kubernetes support
-* eBPF network dependency tracing
-* Advanced ML anomaly scoring
-* Distributed cluster analytics
-* Intelligent auto-remediation
-* AI-based infrastructure forecasting
+- 🤖 LLM-powered operational intelligence
+- 📚 NLP infrastructure querying
+- 📈 Predictive forecasting
+- 🔗 Advanced dependency graph visualization
+- 🧠 ML-based anomaly scoring
+- 🌐 Multi-cluster observability
+- ⚡ Intelligent auto-remediation
+- 🛰️ eBPF network tracing
 
 ---
 
-# ABB Accelerator 2026
+# 🏆 ABB Accelerator 2026
 
-Developed as part of the ABB Accelerator 2026 innovation challenge focused on:
+PodSage AI was developed as part of the **ABB Accelerator 2026** innovation challenge focused on:
 
-* AI-powered infrastructure intelligence
-* Kubernetes observability
-* Real-time analytics
-* Automation & monitoring
-* Cloud-native operational systems
-
----
-
-# License
-
-MIT License
-
-Copyright (c) 2026 PodSage AI
+- AI-powered infrastructure intelligence
+- Kubernetes observability
+- Cloud-native analytics
+- Operational automation
 
 ---
 
-# Maintainers
+# 👥 Maintainers
 
-* Abhrankan Chakrabarti
-* PodSage AI Team
+- Abhrankan Chakrabarti
+- PodSage AI Team
 
 ---
 
-# Status
+# 📄 License
 
-Current Version:
+MIT License © 2026 PodSage AI
+
+---
+
+# 📌 Status
 
 ```text
-v0.1.3-alpha
-```
-
-Project Status:
-
-```text
-Active Development
+Version: v0.1.3-alpha
+Status: Active Development
 ```
