@@ -14,6 +14,13 @@ The platform combines Kubernetes telemetry, Prometheus metrics, AI-driven analys
 
 ---
 
+# Organisation
+
+**Organisation Display Name:** PodSage AI
+**GitHub Organization:** `PodSageAI`
+
+---
+
 ## Key Features
 
 * Real-time Kubernetes monitoring
@@ -27,6 +34,9 @@ The platform combines Kubernetes telemetry, Prometheus metrics, AI-driven analys
 * Kubernetes-compatible architecture
 * Extensible AI agent framework
 * Fault-tolerant metric fallback handling
+* Node-level fallback monitoring
+* Lightweight FastAPI backend
+* AI insights generation engine
 
 ---
 
@@ -56,6 +66,7 @@ flowchart LR
 
     D["Intelligence & Storage Layer<br/><br/>
     • Prometheus (Time-Series DB)<br/>
+    • SQLite Metadata Storage<br/>
     • Loki / Vector Log Aggregation<br/>
     • NetworkX / Neo4j Dependency Graph<br/>
     • ML Models (Anomaly Detection & Forecasting)"]
@@ -83,8 +94,9 @@ flowchart LR
 
 ## Backend
 
-* Python
+* Python 3.11
 * FastAPI
+* Uvicorn
 * WebSockets
 * SQLite
 
@@ -129,38 +141,49 @@ PodSage-AI/
 ├── backend/
 │   ├── Dockerfile
 │   ├── docker-compose.yml
+│   ├── prometheus.yml
 │   ├── requirements.txt
+│   ├── podsage.db
+│   │
 │   └── app/
 │       ├── api/
 │       │   ├── anomalies.py
 │       │   ├── dependencies.py
 │       │   ├── insights.py
-│       │   └── metrics.py
+│       │   ├── metrics.py
+│       │   └── __init__.py
 │       │
 │       ├── database/
-│       │   └── db.py
+│       │   ├── db.py
+│       │   └── __init__.py
 │       │
 │       ├── models/
-│       │   └── schemas.py
+│       │   ├── schemas.py
+│       │   └── __init__.py
 │       │
 │       ├── services/
 │       │   ├── ai_service.py
 │       │   ├── alert_service.py
 │       │   ├── dependency_service.py
 │       │   ├── kubernetes_service.py
-│       │   └── prometheus_service.py
+│       │   ├── prometheus_service.py
+│       │   └── __init__.py
 │       │
 │       ├── websocket/
-│       │   └── live_updates.py
+│       │   ├── live_updates.py
+│       │   └── __init__.py
 │       │
+│       ├── __init__.py
 │       └── main.py
+│
+└── .gitignore
 ```
 
 ---
 
 # API Endpoints
 
-## Health
+## Health Endpoints
 
 | Endpoint  | Description          |
 | --------- | -------------------- |
@@ -169,7 +192,7 @@ PodSage-AI/
 
 ---
 
-## Metrics
+## Metrics Endpoints
 
 | Endpoint            | Description          |
 | ------------------- | -------------------- |
@@ -179,17 +202,29 @@ PodSage-AI/
 
 ---
 
-## AI & Intelligence
+## AI & Intelligence Endpoints
 
-| Endpoint        | Description            |
-| --------------- | ---------------------- |
-| `/anomalies`    | Detected anomalies     |
-| `/insights`     | AI-generated insights  |
-| `/dependencies` | Service dependency map |
+| Endpoint        | Description                       |
+| --------------- | --------------------------------- |
+| `/anomalies`    | Detected anomalies                |
+| `/insights`     | AI-generated operational insights |
+| `/dependencies` | Service dependency map            |
 
 ---
 
 # Example Responses
+
+## Root Endpoint
+
+```json
+{
+  "message": "PodSage AI Backend Running",
+  "status": "healthy",
+  "version": "v0.1.3-alpha"
+}
+```
+
+---
 
 ## CPU Metrics
 
@@ -220,7 +255,8 @@ PodSage-AI/
   {
     "type": "High CPU Usage",
     "pod": "node-exporter:9100",
-    "value": 24.82
+    "value": 24.82,
+    "unit": "%"
   }
 ]
 ```
@@ -260,19 +296,21 @@ pip install -r requirements.txt
 
 ---
 
-## Run Backend
+# Running the Backend
+
+## Local Development
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-Backend runs on:
+Backend URL:
 
 ```text
 http://localhost:8000
 ```
 
-Swagger documentation:
+Swagger Docs:
 
 ```text
 http://localhost:8000/docs
@@ -298,6 +336,16 @@ docker compose down
 
 ---
 
+# Docker Services
+
+| Service       | Port | Description                |
+| ------------- | ---- | -------------------------- |
+| Backend       | 8000 | FastAPI backend            |
+| Prometheus    | 9090 | Metrics database           |
+| Node Exporter | 9100 | Host/node metrics exporter |
+
+---
+
 # Prometheus Integration
 
 PodSage AI supports:
@@ -306,9 +354,33 @@ PodSage AI supports:
 * Node Exporter metrics
 * Kubernetes metrics
 * Container metrics
-* Fallback node-level monitoring
+* Node-level fallback monitoring
 
-The backend automatically falls back to node metrics if container-level metrics are unavailable.
+The backend automatically falls back to node metrics when container-level metrics are unavailable.
+
+Example fallback query:
+
+```promql
+1 - avg(rate(node_cpu_seconds_total{mode="idle"}[1m]))
+```
+
+---
+
+# AI Anomaly Detection
+
+The AI engine currently supports:
+
+* High CPU usage detection
+* High memory usage detection
+* Frequent restart detection
+
+Default thresholds:
+
+```python
+CPU_THRESHOLD = 0.2
+MEMORY_THRESHOLD = 500000000
+RESTART_THRESHOLD = 5
+```
 
 ---
 
@@ -322,6 +394,7 @@ The backend automatically falls back to node metrics if container-level metrics 
 * Dependency mapping
 * Prometheus querying
 * Real-time backend APIs
+* Fault-tolerant Prometheus fallback handling
 
 ---
 
@@ -337,6 +410,8 @@ The backend automatically falls back to node metrics if container-level metrics 
 * eBPF network dependency tracing
 * Advanced ML anomaly scoring
 * Distributed cluster analytics
+* Intelligent auto-remediation
+* AI-based infrastructure forecasting
 
 ---
 
