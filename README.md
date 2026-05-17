@@ -28,6 +28,8 @@
 
 PodSage AI is an intelligent Kubernetes observability platform that monitors, analyzes, and correlates real-time infrastructure behavior using AI-powered operational insights.
 
+It includes a React/Vite frontend dashboard for interactive metric visualization, dependency maps, and AI insights.
+
 Built for the **ABB Accelerator 2026** challenge, PodSage AI combines Kubernetes telemetry, Prometheus metrics, anomaly detection, dependency analysis, and infrastructure intelligence into a unified monitoring ecosystem.
 
 The mission is simple:
@@ -94,9 +96,9 @@ flowchart LR
     • ML Models"]
 
     E["Dashboard & Visualization Layer
-    • React / Next.js
-    • Grafana
+    • React / Vite
     • Recharts
+    • React Flow
     • WebSockets"]
 
     A --> B
@@ -140,12 +142,13 @@ flowchart LR
 * Forecast-ready analytics architecture
 * Operational intelligence pipeline
 
-## Frontend (Planned)
+## Frontend
 
-* React / Next.js
+* React
+* Vite
 * Recharts
-* Plotly
-* Grafana
+* React Flow
+* WebSocket live dashboard
 
 ---
 
@@ -167,7 +170,29 @@ PodSage-AI/
 │   ├── prometheus.yml
 │   ├── requirements.txt
 │   └── podsage.db
-│
+├── frontend/
+│   ├── index.html
+│   ├── package.json
+│   ├── README.md
+│   ├── vite.config.js
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   ├── api/
+│   │   │   └── client.js
+│   │   ├── components/
+│   │   │   ├── AIInsights.jsx
+│   │   │   ├── AnomalyTable.jsx
+│   │   │   ├── ClusterSummary.jsx
+│   │   │   ├── DependencyGraph.jsx
+│   │   │   ├── Header.jsx
+│   │   │   ├── JsonPreview.jsx
+│   │   │   ├── MetricCard.jsx
+│   │   │   └── SeriesChart.jsx
+│   │   ├── styles/
+│   │   │   └── global.css
+│   │   └── utils/
+│   │       └── metrics.js
 ├── README.md
 ├── LICENSE
 └── .gitignore
@@ -227,6 +252,15 @@ pip install -r requirements.txt
 
 ---
 
+## 4. Frontend Setup
+
+```bash
+cd ../frontend
+npm install
+```
+
+---
+
 # ▶️ Running the Backend
 
 ## Local Development
@@ -251,6 +285,23 @@ ReDoc Documentation:
 
 ```text
 http://localhost:8000/redoc
+```
+
+---
+
+# ▶️ Running the Frontend
+
+## Local Development
+
+```bash
+cd frontend
+npm run dev
+```
+
+Frontend URL:
+
+```text
+http://localhost:5173
 ```
 
 ---
