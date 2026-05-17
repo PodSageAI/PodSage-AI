@@ -581,6 +581,33 @@ git push origin feature/my-feature
 
 ---
 
+# � Release Notes
+
+## PodSage AI v0.1.4-alpha
+
+### Improvements
+- Added React/Vite frontend dashboard
+- Added interactive metrics, anomaly, and dependency visualization
+- Added WebSocket live update support for the UI
+- Improved frontend/backend integration and setup documentation
+- Updated project structure to include the `frontend/` app
+
+### Frontend Enhancements
+- Added React-based chart and dashboard components
+- Added Recharts and React Flow for visual analytics
+- Added responsive UI for AI insights, anomaly tables, and service dependency maps
+
+### Backend Enhancements
+- Retained resilient Prometheus query handling
+- Preserved backend stability during Prometheus downtime
+- Improved API stability for frontend consumption
+
+### Infrastructure
+- Added frontend build and development workflow
+- Improved documentation for running frontend and backend together
+
+---
+
 # 📄 License
 
 MIT License © 2026 PodSage AI
@@ -590,7 +617,7 @@ MIT License © 2026 PodSage AI
 # 📌 Project Status
 
 ```text
-Version: v0.1.3-alpha
+Version: v0.1.4-alpha
 Status: Active Development
 ```
 

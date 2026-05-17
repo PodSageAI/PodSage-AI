@@ -9,7 +9,7 @@ from app.api.insights import router as insights_router
 from app.database.db import initialize_database
 
 # Application version
-VERSION = "v0.1.3-alpha"
+VERSION = "v0.1.4-alpha"
 
 # Initialize FastAPI app
 app = FastAPI(
