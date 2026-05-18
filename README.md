@@ -24,13 +24,21 @@
 
 ---
 
+# 🏢 About PodSage AI
+
+PodSage AI is the organization behind this repository. The `PodSage-AI` project is a flagship open-source platform built by PodSage AI to deliver intelligent Kubernetes observability, AI-assisted anomaly detection, and infrastructure intelligence.
+
+---
+
+---
+
 # 📖 Overview
 
-PodSage AI is an intelligent Kubernetes observability platform that monitors, analyzes, and correlates real-time infrastructure behavior using AI-powered operational insights.
+`PodSage-AI` is a flagship project built by the PodSage AI organization. It is an intelligent Kubernetes observability platform that monitors, analyzes, and correlates real-time infrastructure behavior using AI-powered operational insights.
 
-It includes a React/Vite frontend dashboard for interactive metric visualization, dependency maps, and AI insights.
+The project includes a React/Vite frontend dashboard for interactive metric visualization, dependency maps, and AI insights.
 
-Built for the **ABB Accelerator 2026** challenge, PodSage AI combines Kubernetes telemetry, Prometheus metrics, anomaly detection, dependency analysis, and infrastructure intelligence into a unified monitoring ecosystem.
+Built for the **ABB Accelerator 2026** challenge, `PodSage-AI` combines Kubernetes telemetry, Prometheus metrics, anomaly detection, dependency analysis, and infrastructure intelligence into a unified monitoring ecosystem.
 
 The mission is simple:
 
